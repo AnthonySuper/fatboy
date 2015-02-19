@@ -20,7 +20,6 @@ class Fatboy
       fmt_time = Fatboy::Helpers.day_format(time.utc)
       store_name = Fatboy::Helpers.format_store(@model_name, fmt_time)
       
-      puts "Setting up A TBP with #{store_name}"
       Fatboy::TimeBasedPopularity.new(@redis, store_name)
     end
 
