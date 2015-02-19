@@ -1,41 +1,31 @@
 require "fatboy/version"
-
+require 'redis'
+require_relative './fatboy/popularity'
+require_relative './fatboy/helpers'
 class Fatboy
   def initialize(redis: Redis.new)
     @redis = redis
   end
-  alias :[] :view
   def view(obj)
-
-  end
-
-  private
-
-  def db_times
-    [:hour_str, :day_str, :month_str, :year_str].map do |method|
-      self.send method
+    stores = Fatboy::Helpers.all_format(Time.now) do |time|
+      Fatboy::Helpers.format_store(obj.class.name, time)
     end
-  end
-
-  ## 
-  # This function takes a format string and returns the date formatted
-  # accordingly. It exists so we don't have to type "Time.not.utc.strftime"
-  # a billion time
-  def format_time format
-    Time.now.utc.strftime format
+    stores.map{|store| inc_member(store, obj.id)}
   end
   ##
-  # identify views per hour
-  def hour_str
-    format_time "%Y%m%d%H"
+  # let users view with a shorthand
+  alias :[] view
+
+  def popular(model)
+    Popularity.new(model, @redis)
   end
-  def day_str
-    format_time "%Y%m%d"
-  end
-  def month_str
-    format_time "%Y%m"
-  end
-  def year_str
-    format_time "%Y"
+  
+  HOUR_FORMAT_STR = "%Y%m%d%H"
+  DAY_FORMAT_STR = "%Y%m%d"
+  MONTH_FORMAT_STR = "%Y%m"
+  YEAR_FORMAT_STR = "%Y"
+  private
+  def inc_member(store, id)
+    @redis.zincrby(store, 1, id)
   end
 end
