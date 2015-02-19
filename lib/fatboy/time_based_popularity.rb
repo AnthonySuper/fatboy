@@ -5,20 +5,43 @@ class Fatboy
   # You should probably never initialize this yourself.
   class TimeBasedPopularity
     ##
-    # What redis to look in, and what sorted set we're using
+    # What redis to look in, and what sorted set we're using.
+    # Probably don't ever initialize this yourself.
     def initialize(redis, store)
       @redis = redis
       @store = store
     end
+    ##
+    # Get an enumerator of all viewed items, as a Fatboy::ViewedItem, in 
+    # rank order.
+    # Pretty useful for lazy operations and such.
+    def enumerator
+      Enumerator.new(size) do |yielder|
+        range(0..(size-1)).each{|x| yielder.yield x}
+      end
+    end
+    ##
+    # Get the most viewed item. 
+    # Returns a Fatboy::ViewedItem
     def most
       range(0..1).first
     end
+    ##
+    # Get the least viewed item.
+    # Returns a Fatboy::ViewedItem
     def least
       range(-1..-2).first
     end
+
+    ##
+    # Get the total number of items viewed.
     def size
       @redis.zcard(@store)
     end
+
+    ##
+    # Specify a range of ranks, and gets them.
+    # Returns an array of Fatboy::ViewedItem
     def range(rng)
       start = rng.first
       stop = rng.last

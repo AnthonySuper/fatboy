@@ -11,8 +11,17 @@ class Fatboy
       @views = views.to_i
       @rank = rank.to_i
     end
+    ##
+    # Id of the model contained this this ViewedItem
     attr_reader :id
+    ##
+    # Amount this ViewedItem has been viewed in a time period.
+    # This time period was pre-set on construction.
     attr_reader :views
+    ##
+    # The rank, 0 being the most viewed, of this item.
+    # The time period was pre-set on construction, typically from a
+    # Fatboy::TimeBasedView
     attr_reader :rank
   end
 end
