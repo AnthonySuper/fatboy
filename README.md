@@ -58,22 +58,32 @@ Don't worry if that's a brand-new Fatboy instance---as long as the Redis is the 
 Fatboy makes it easy to retrieve a list of the most-popular records in your database.
 Check it now now:
 ```ruby
-  fatboy.popular(Image).today # => Top 10 most viewed images today
-  fatboy.popular("Image").all_time # => Top viewed images all time
+  fatboy.popular(Image).today # => most viewed image today
+  fatboy.popular("Image").all_time # => Top viewed image of all time
 ```
 
+Want it from other days?
+
+```ruby
+  # most popular image a month ago
+  fatboy.popular(Image).day(Time.now << 1)
+  # Or with active support
+  fatboy.popular(Image).day(1.months.ago)
+```
 Don't want just the most popular?
 Maybe you'd like the least popular?
 
 ```ruby
-  fatboy.popular(Image).today(:least)
-  fatboy.popular(Image).this_month(:least)
+  fatboy.popular(Image).day(Time.now).least
+  fatboy.popular(Image).month(Time.now).least
 ```
 
 Or perhaps a range?
 
 ```ruby
-  fatboy.popular(Image).this_month(30..40)
+  fatboy.popular(Image).this_month(range: 10..20)
+  # or, a range for a while ago
+  fatboy.popular(Image).month(3.months.ago, range: 10..20)
 ```
 
 Fatboy makes it easier. 
