@@ -86,7 +86,7 @@ Or perhaps a range?
   fatboy.popular(Image).month(3.months.ago).range(10..20)
 ```
 
-Fatboy makes it easier. 
+Fatboy makes it easier. See the rdoc for details. 
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/fatboy/fork )

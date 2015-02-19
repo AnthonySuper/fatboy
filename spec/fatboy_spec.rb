@@ -26,17 +26,17 @@ RSpec.describe Fatboy do
     it "orders views by day" do
       2.times{f.view(Model.new(10))}
       1.times{f.view(Model.new(11))}
-      expect(f.popular(Model).today.most).to eq(10)
+      expect(f.popular(Model).today.most.id).to eq(10)
     end
     it "orders views by month" do
       2.times{f.view(Model.new(10))}
       1.times{f.view(Model.new(11))}
-      expect(f.popular(Model).this_month.most).to eq(10)
+      expect(f.popular(Model).this_month.most.id).to eq(10)
     end
     it "orders views by year" do
       2.times{f.view(Model.new(10))}
       1.times{f.view(Model.new(11))}
-      expect(f.popular(Model).this_year.most).to eq(10)
+      expect(f.popular(Model).this_year.most.id).to eq(10)
     end
   end
   describe "popularity finding" do
