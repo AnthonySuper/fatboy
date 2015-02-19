@@ -10,6 +10,25 @@ class Fatboy
       @model_name  = model.to_s
     end
 
+    def hour(time)
+      fmt_tim = Fatboy::Helpers.hour_format(time.utc)
+      store_name = Fatboy::Helpers.format_store(@model_name, fmt_tim)
+      Fatboy::TimeBasedPopularity.new(@redis, store_name)
+    end
+
+    def day(time)
+      fmt_time = Fatboy::Helpers.day_format(time.utc)
+      store_name = Fatboy::Helpers.format_store(@model_name, fmt_time)
+      
+      puts "Setting up A TBP with #{store_name}"
+      Fatboy::TimeBasedPopularity.new(@redis, store_name)
+    end
+
+    def month(time)
+      fmt_time = Fatboy::Helpers.month_format(time.utc)
+      store_name = Fatboy::Helpers.format_store(@model_name, fmt_time)
+      Fatboy::TimeBasedPopularity.new(@redis, store_name)
+    end
     def year(time)
       fmt_time = Fatboy::Helpers.year_format(time.utc)
       store_name = Fatboy::Helpers.format_store(@model_name, fmt_time)

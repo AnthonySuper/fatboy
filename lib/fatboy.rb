@@ -7,8 +7,8 @@ class Fatboy
     @redis = redis
   end
   def view(obj)
-    stores = Fatboy::Helpers.all_format(Time.now) do |time|
-      Fatboy::Helpers.format_store(obj.class.name, time)
+    stores = Fatboy::Helpers.all_format(Time.now).map do |time|
+      Fatboy::Helpers.format_store(obj.class.to_s, time)
     end
     stores.map{|store| inc_member(store, obj.id)}
   end

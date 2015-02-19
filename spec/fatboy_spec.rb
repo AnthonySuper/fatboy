@@ -10,6 +10,7 @@ RSpec.describe Fatboy do
     after(:each){Timecop.return}
     it "ads to the redis" do
       l = Fatboy::Helpers.day_format(Time.now)
+      l = Fatboy::Helpers.format_store("Model", l)
       expect{
         f.view(Model.new(10))
       }.to change{redis.zcount(l, -100, 100)}.from(0).to(1)

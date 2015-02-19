@@ -15,7 +15,7 @@ class Fatboy
     def range(rng)
       start = rng.first
       stop = rng.last
-      @redis.zrange(@store, start, stop)
+      @redis.zrange(@store, start, stop).map(&:to_i)
     end
   end
 end
