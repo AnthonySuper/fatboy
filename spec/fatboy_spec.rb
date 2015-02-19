@@ -3,11 +3,25 @@ RSpec.describe Fatboy do
   it "can be initialized" do
     expect{Fatboy.new}.to_not raise_error
   end
-  before(:each){Timecop.freeze(Date.today)}
-  after(:each){Timecop.return}
   let(:redis){MockRedis.new}
   let(:f){Fatboy.new(redis: redis)}
+  describe "storage" do
+    before(:each){Timecop.freeze(Date.today)}
+    after(:each){Timecop.return}
+    it "ads to the redis" do
+      l = Fatboy::Helpers.day_format(Time.now)
+      expect{
+        f.view(Model.new(10))
+      }.to change{redis.zcount(l, -100, 100)}.from(0).to(1)
+      f.view(Model.new(11))
+      expect(redis.zscore(l, 11)).to eq(1)
+    end
+
+  end
   describe "ordering" do
+
+    before(:each){Timecop.freeze(Date.today)}
+    after(:each){Timecop.return}
     it "orders views by day" do
       2.times{f.view(Model.new(10))}
       1.times{f.view(Model.new(11))}

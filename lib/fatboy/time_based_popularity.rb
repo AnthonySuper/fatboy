@@ -9,5 +9,13 @@ class Fatboy
       @redis = redis
       @store = store
     end
+    def most
+      range(1..2).first
+    end
+    def range(rng)
+      start = rng.first
+      stop = rng.last
+      @redis.zrange(@store, start, stop)
+    end
   end
 end
