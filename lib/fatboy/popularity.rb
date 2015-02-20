@@ -1,7 +1,7 @@
 require_relative './time_based_popularity'
 class Fatboy
   ##
-  # This class is used to query how popular something is. 
+  # This class is used to query how popular something is.
   class Popularity
     ##
     # We always pass in a redis
@@ -25,7 +25,7 @@ class Fatboy
     def day(time)
       fmt_time = Fatboy::Helpers.day_format(time.utc)
       store_name = Fatboy::Helpers.format_store(@model_name, fmt_time)
-      
+
       Fatboy::TimeBasedPopularity.new(@redis, store_name)
     end
     ##
@@ -62,7 +62,7 @@ class Fatboy
       month(Time.now)
     end
     ##
-    # Get a Fatboy::TimeBasedPopularity for this year. 
+    # Get a Fatboy::TimeBasedPopularity for this year.
     def this_year
       year(Time.now)
     end

@@ -12,7 +12,7 @@ class Fatboy
       @store = store
     end
     ##
-    # Get an enumerator of all viewed items, as a Fatboy::ViewedItem, in 
+    # Get an enumerator of all viewed items, as a Fatboy::ViewedItem, in
     # rank order.
     # Pretty useful for lazy operations and such.
     def enumerator
@@ -21,7 +21,7 @@ class Fatboy
       end
     end
     ##
-    # Get the most viewed item. 
+    # Get the most viewed item.
     # Returns a Fatboy::ViewedItem
     def most
       range(0..1).first

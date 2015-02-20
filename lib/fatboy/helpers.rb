@@ -33,7 +33,7 @@ class Fatboy
       yr.utc.strftime(Fatboy::YEAR_FORMAT_STR)
     end
     ##
-    # Get an array of the hour format, the day format, the month format, and 
+    # Get an array of the hour format, the day format, the month format, and
     # the year format
     def self.all_format(time)
       [:hour_format, :day_format, :month_format, :year_format].map do |func|

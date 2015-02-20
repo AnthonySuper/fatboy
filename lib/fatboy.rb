@@ -4,7 +4,7 @@ require_relative './fatboy/popularity'
 require_relative './fatboy/helpers'
 ##
 # Fatboy is the main class for interacting with the system.
-# It provides a variety of functionality. 
+# It provides a variety of functionality.
 class Fatboy
   ##
   # Create a new Fatboy.
@@ -28,8 +28,8 @@ class Fatboy
   # let users view with a shorthand
   alias :[] view
   ##
-  # This method returns a Fatboy::Popularity, the main interface for 
-  # determining the popularity of your models. 
+  # This method returns a Fatboy::Popularity, the main interface for
+  # determining the popularity of your models.
   # Example:
   #   fatboy.popular(Image)
   #   fatboy.popular("Image")
@@ -38,7 +38,7 @@ class Fatboy
     Popularity.new(model, @redis)
   end
   ##
-  # Format string we use to store the views per hour 
+  # Format string we use to store the views per hour
   HOUR_FORMAT_STR = "%Y%m%d%H"
   ##
   # Format string we use to store the views per day
