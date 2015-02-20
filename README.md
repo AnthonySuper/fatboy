@@ -1,4 +1,4 @@
-# Fatboy
+![Fatboy Logo](https://cdn.rawgit.com/AnthonySuper/fatboy/master/assets/logo.svg)
 ##### See views, right here, right now
 Fatboy is a gem which manages view counts on ActiveRecord objects (or things that quack like them).
 It's great for seeing the most (and least) viewed models on your website.
