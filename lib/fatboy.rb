@@ -14,7 +14,14 @@ class Fatboy
   def initialize(redis: Redis.new)
     @redis = redis
   end
-
+  ##
+  # Many provides a way to view many different models at once, for
+  # speed reasons.
+  #
+  # Great if you need to view a lot of models.
+  def many
+    Fatboy::Many.new(@redis)
+  end
   def views_for(model)
     Fatboy::ViewTracker.new(@redis, model)
   end
