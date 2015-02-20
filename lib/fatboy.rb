@@ -2,6 +2,7 @@ require "fatboy/version"
 require 'redis'
 require_relative './fatboy/popularity'
 require_relative './fatboy/helpers'
+require_relative './fatboy/view_tracker'
 ##
 # Fatboy is the main class for interacting with the system.
 # It provides a variety of functionality.
@@ -12,6 +13,10 @@ class Fatboy
   #  * +redis:+ : The redis to store views in. By default, Redis.new
   def initialize(redis: Redis.new)
     @redis = redis
+  end
+
+  def views_for(model)
+    Fatboy::ViewTracker.new(@redis, model)
   end
   ##
   # Say that you have viewed an object, making the proper records for
@@ -26,7 +31,9 @@ class Fatboy
   end
   ##
   # let users view with a shorthand
-  alias :[] view
+  def [](obj)
+    view(obj)
+  end
   ##
   # This method returns a Fatboy::Popularity, the main interface for
   # determining the popularity of your models.
