@@ -48,7 +48,8 @@ Now, managing views is pretty useless if you can't retrieve them later.
 Thankfully, fatboy makes this easy as well:
 
 ```ruby
-  fatboy.views_for(image) # => 1
+  fatboy.views_for(image).today # => 1
+  fatboy.views_for(image).year # => 1
 ```
 
 Don't worry if that's a brand-new Fatboy instance---as long as the Redis is the same, Fatboy's view count will be the same.
@@ -89,7 +90,7 @@ Or perhaps a range?
 Fatboy makes it easier. See the rdoc for details. 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/fatboy/fork )
+1. Fork it ( https://github.com/AnthonySuper/fatboy/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Write functionality and tests
 4. Commit your changes (`git commit -am 'Add some feature'`)
