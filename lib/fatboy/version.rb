@@ -1,5 +1,5 @@
 class Fatboy
   ##
   # Gem version of Fatboy
-  VERSION = "0.0.1"
+  VERSION = "0.0.2"
 end
