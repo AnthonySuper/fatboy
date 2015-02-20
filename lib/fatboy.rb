@@ -27,7 +27,11 @@ class Fatboy
     stores = Fatboy::Helpers.all_format(Time.now).map do |time|
       Fatboy::Helpers.format_store(obj.class.to_s, time)
     end
-    stores.map{|store| inc_member(store, obj.id)}
+    @redis.pipelined do
+      stores.each do |store|
+        inc_member(store, obj.id)
+      end
+    end
   end
   ##
   # let users view with a shorthand
