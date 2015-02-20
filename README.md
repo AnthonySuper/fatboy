@@ -49,7 +49,7 @@ Thankfully, fatboy makes this easy as well:
 
 ```ruby
   fatboy.views_for(image).today # => 1
-  fatboy.views_for(image).year # => 1
+  fatboy.views_for(image).this_year # => 1
 ```
 
 Don't worry if that's a brand-new Fatboy instance---as long as the Redis is the same, Fatboy's view count will be the same.
