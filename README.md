@@ -60,7 +60,6 @@ Fatboy makes it easy to retrieve a list of the most-popular records in your data
 Check it now now:
 ```ruby
   fatboy.popular(Image).today.most # => most viewed image today
-  fatboy.popular("Image").all_time.most # => Top viewed image of all time
 ```
 
 Want it from other days?
