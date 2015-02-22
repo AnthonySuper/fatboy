@@ -90,6 +90,19 @@ Or perhaps a range?
 ```
 
 Fatboy makes it easier. See the rdoc for details. 
+##### Pipelined
+
+If you need to view lots of models at once, you may find Fatboy::Many to be a good option.
+Check it out now:
+
+```ruby
+  m = fatboy.many
+  m[image]
+  comments.each{|c| m[c]}
+  m[description]
+  m.commit!
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/AnthonySuper/fatboy/fork )
