@@ -3,8 +3,7 @@
 ##### See views, right here, right now
 [![Build Status](https://travis-ci.org/AnthonySuper/fatboy.svg)](https://travis-ci.org/AnthonySuper/fatboy)
 [![Code Climate](https://codeclimate.com/github/AnthonySuper/fatboy/badges/gpa.svg)](https://codeclimate.com/github/AnthonySuper/fatboy)
-[![Code Climate](https://codeclimate.com/github/AnthonySuper/fatboy/badges/gpa.svg)](https://codeclimate.com/github/AnthonySuper/fatboy)
-
+[![Test Coverage](https://codeclimate.com/github/AnthonySuper/fatboy/badges/coverage.svg)](https://codeclimate.com/github/AnthonySuper/fatboy)
 Fatboy is a gem which manages view counts on ActiveRecord objects (or things that quack like them).
 
 It's great for seeing the most (and least) viewed models on your website.
