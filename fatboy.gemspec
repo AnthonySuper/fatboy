@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "timecop", "~> 0.7.3", ">= 0.7"
   spec.add_development_dependency "mock_redis", "~> 0.14.0", ">= 0.14.0"
   spec.add_development_dependency "simplecov", "~> 0.9.2", ">= 0.9.2"
+  spec.add_development_dependency "codeclimate-test-reporter"
   spec.add_runtime_dependency "redis", "~> 3.2.1", ">= 3.2"
   spec.required_ruby_version = ">= 2.0"
 end

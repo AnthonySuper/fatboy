@@ -2,6 +2,9 @@ require 'bundler/setup'
 Bundler.setup
 require 'simplecov'
 SimpleCov.start
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
+
 require 'fatboy'
 require_relative './mocks/model.rb'
 require 'timecop'

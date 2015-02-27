@@ -1,5 +1,8 @@
 ![Fatboy Logo](https://cdn.rawgit.com/AnthonySuper/fatboy/master/assets/logo-optimize.svg)
 ##### See views, right here, right now
+[![Build Status](https://travis-ci.org/AnthonySuper/fatboy.svg)](https://travis-ci.org/AnthonySuper/fatboy)
+[![Code Climate](https://codeclimate.com/github/AnthonySuper/fatboy/badges/gpa.svg)](https://codeclimate.com/github/AnthonySuper/fatboy)
+
 Fatboy is a gem which manages view counts on ActiveRecord objects (or things that quack like them).
 It's great for seeing the most (and least) viewed models on your website.
 To make things even better, Fatboy will store view counts by day, month, year,
@@ -8,8 +11,6 @@ and all-time.
 It doesn't touch your SQL database. 
 Fatboy stays slim in Redis.
 
-NOTE: This is currenlty not production-ready. 
-It will be soon, though.
 ## Installation
 
 Add this line to your application's Gemfile:
